@@ -1,0 +1,93 @@
+/* ============================
+   LendEarn Theme Configuration
+   ============================ */
+
+@import './variables.css';
+
+/* Main Theme */
+:root {
+  color-scheme: light;
+}
+
+/* Light Theme (Default) */
+body[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+  body[data-theme="auto"],
+  body:not([data-theme]) {
+    --color-text-primary: var(--color-gray-100);
+    --color-text-secondary: var(--color-gray-300);
+    --color-text-tertiary: var(--color-gray-400);
+    --color-bg-primary: var(--color-gray-900);
+    --color-bg-secondary: var(--color-gray-800);
+    --color-bg-tertiary: var(--color-gray-700);
+    --color-border-light: var(--color-gray-700);
+    --color-border-default: var(--color-gray-600);
+    --color-border-dark: var(--color-gray-500);
+    color-scheme: dark;
+  }
+}
+
+body[data-theme="dark"] {
+  --color-text-primary: var(--color-gray-100);
+  --color-text-secondary: var(--color-gray-300);
+  --color-text-tertiary: var(--color-gray-400);
+  --color-bg-primary: var(--color-gray-900);
+  --color-bg-secondary: var(--color-gray-800);
+  --color-bg-tertiary: var(--color-gray-700);
+  --color-border-light: var(--color-gray-700);
+  --color-border-default: var(--color-gray-600);
+  --color-border-dark: var(--color-gray-500);
+  color-scheme: dark;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  :root {
+    --color-border-default: var(--color-gray-700);
+    --color-text-secondary: var(--color-gray-800);
+  }
+
+  body[data-theme="dark"],
+  @media (prefers-color-scheme: dark) {
+    --color-border-default: var(--color-gray-400);
+    --color-text-secondary: var(--color-gray-200);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Theme */
+@media print {
+  :root {
+    --color-text-primary: var(--color-gray-900);
+    --color-bg-primary: var(--color-white);
+  }
+
+  body {
+    background: var(--color-white);
+    color: var(--color-text-primary);
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  button,
+  [role="button"] {
+    border: 1px solid var(--color-border-default);
+  }
+}
